@@ -1,0 +1,156 @@
+<!-- Author : Bill Buis ! -->
+<!-- The purpose of this view is to define the Request Info Form for the application !-->
+
+<!DOCTYPE html>
+<html lang="en" mlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Server Request Form (<b>mandatory fields begin with a * character and you must click the "Save Form" button at the bottom of the page to save your entries)</b></h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+    <form name = "myForm" ng-submit="write_form();form_saved()" ng-controller="serverinfo_controller" ng-dblclick="">
+        <div class="form-group">
+            <label>* Requester First Name </label>
+        <input class="form-control" name="first_name" placeholder="John" type="text" ng-model="servervars.first_name" required/>
+        <span class="required" ng-show="myForm.first_name.$touched && myForm.first_name.$invalid">The First name is required.</span>
+        </div>
+        <div class="form-group">
+            <label>* Requester Last Name </label>
+            <input class="form-control" name="last_name" placeholder="Smith" type="text" ng-model="servervars.last_name" required/>
+            <span class="required" ng-show="myForm.last_name.$touched && myForm.last_name.$invalid">The Last Name is required.</span>
+        </div>
+        <div class="form-group">
+            <label>* Phone Number </label>
+        <input class="form-control" name="number" type="text" placeholder="xxx-xxx-xxxx" ng-model="servervars.number" required/>
+        </div>
+        <div class="form-group">
+            <label>* Email </label>
+            <input class="form-control" name="email" type="email" ng-model="servervars.email" placeholder="your@email.com" required/>
+            <span class="required" ng-show="myForm.email.$touched && myForm.email.$invalid ||  myForm.email.$error.email"> Email is required and
+                must be valid.</span>
+        </div>
+        <div class="form-group">
+            <label>* Project Name</label>
+            <input class="form-control" placeholder="My Project" name= "project_name" type="text" ng-model="servervars.project_name" required/>
+            <span class="required" ng-show="myForm.project_name.$touched && myForm.project_name.$invalid"> Project Name is required.</span>
+        </div>
+        <div class="form-group">
+            <label>* Brief Description of what this server/device will be used for: </label>
+            <textarea class="form-control" placeholder="Hosting things" name= "use" ng-model="servervars.use" required> </textarea>
+            <span class="required" ng-show="myForm.use.$touched && myForm.use.$invalid"> Description of what this item will be used for is required.</span>
+        </div>
+
+            <div class="form-group">
+                <label>* Desired Location</label>
+            <select name="location_name" class="form-control" ng-model="servervars.location_name" required>
+                <option value="" selected>Select a Location</option>
+                <option ng-repeat="x in locations" value="{{x.location}}">{{x.location}}</option>
+            </select>
+            <span class="required" ng-show="myForm.location_name.$invalid && myForm.location_name.$touched "> Desired location is required</span>
+            </div>
+            <div class="form-group">
+                <label>* Host(s) Purpose: </label>
+            <select name="host_purpose" class="form-control" ng-model="servervars.host_purpose" required>
+                <option value="" selected>Select a Server Purpose</option>
+                <option ng-repeat="x in purposes" value="{{x.purpose}}">{{x.purpose}}</option>
+            </select>
+            <span class="required" ng-show="myForm.host_purpose.$invalid && myForm.host_purpose.$touched "> Host(s) purpose is required</span>
+            </div>
+            <div class="form-group">
+                <label>* RAM (GB)</label>
+            <input class="form-control" placeholder="4" name= "ram" type="number" pattern="[0-9][0-9]*" ng-model="servervars.ram" required/>
+            <span class="required" ng-show="myForm.ram.$touched && myForm.ram.$invalid"> Server RAM is required and must be valid (write as x GB)</span>
+            </div>
+            <div class="form-group">
+                <label>* Server CPU</label>
+            <select class="form-control" name="host_cores" ng-model="servervars.host_cores" required>
+                <option value="" selected>Select a CPU Option</option>
+                <option ng-repeat="x in core_options" value="{{x.cores}}">{{x.cores}} Cores</option>
+            </select>
+            <span class="required" ng-show="myForm.host_cores.$invalid && myForm.host_cores.$touched "> Server cores are required</span>
+            </div>
+            <div class="form-group">
+                <label>* OS Volume (GB)</label>
+                <input class="form-control" name= "os_volume" placeholder="40" pattern="[0-9][0-9]*" min="0" type="number" ng-model="servervars.os_volume" required/>
+            <span class="required" ng-show="myForm.os_volume.$touched && myForm.os_volume.$invalid || myForm.os_volume.$error.pattern"> OS Volume is required (write as x GB)</span>
+            </div>
+            <div class="form-group">
+                <label>* Data Volume (GB)</label>
+                <input class="form-control" placeholder="40" pattern="[0-9][0-9]*"name= "data_volume" min="0" type="number" ng-model="servervars.data_volume" required/>
+            <span class="required" ng-show="myForm.data_volume.$touched && myForm.data_volume.$invalid || myForm.data_volume.$error.pattern"> Data Volume is required (write as x GB)</span>
+            </div>
+            <div class="form-group">
+            <label>* Log Volume (GB)</label>
+            <input class="form-control" placeholder="40" pattern="[0-9][0-9]*" name= "log_volume" min="0" type="number" ng-model="servervars.log_volume" required/>
+            <span class="required" ng-show="myForm.log_volume.$touched && myForm.log_volume.$invalid || myForm.log_volume.$error.pattern"> Log Volume is required (write as x GB)</span>
+            </div>
+            <div class="form-group">
+                <label>Other Volumes</label><br><br>
+                <textarea class="form-control" placeholder="Custom Volume: x, Another volume: x" name="other_volumes" ng-model="servervars.other_volumes" ng-pattern="/^\w(\s*:*,?\s*:*\w)*$/"></textarea>
+                <span class="required" ng-show="myForm.other_volumes.$error.pattern">Input for volumes must be volume name: size, volume name: size...</span>
+            </div>
+            <div class="form-group">
+                <label>* Projected Annual Disk Storage Growth (GB/year)</label>
+                <input class="form-control" placeholder="40" name= "projected_growth" type="number" min="0" ng-model="servervars.projected_growth" required/>
+            <span class="required" ng-show="myForm.projected_growth.$touched && myForm.projected_growth.$invalid"> Projected annual disk growth is Required</span>
+            </div>
+            <div class="form-group">
+                <label>* Server Operating System </label>
+            <select class="form-control" name="host_os" ng-model="servervars.host_os" required>
+                <option value="" selected>Select an OS</option>
+                <option ng-repeat="x in os_options" value="{{x.os}}">{{x.os}}</option>
+            </select>
+            <span class="required" ng-show="myForm.host_os.$invalid && myForm.host_os.$touched "> Host OS is required</span>
+            </div>
+            <div class="form-group">
+            <label>* List Application(s) and versions </label>
+                <textarea class="form-control" placeholder="Test : version 1, another : version 2" name="applications" ng-model="servervars.applications" ng-pattern="/^\w(\s*:*,?\s*:*\w)*$/" required></textarea>
+                <span class="required" ng-show="myForm.applications.$touched && myForm.applications.$invalid"> At least one application and version must be listed</span>
+                <span class="required" ng-show="myForm.applications.$error.pattern">Input for applications must be application name: version, application name: version...</span>
+            </div>
+                <div class="form-group">
+                    <label>This Server Requires Load Balancing</label> <br>
+                    <div class="radio">
+                        <label><input type = "radio" ng-model="servervars.load_balancing" value="Yes">Yes</label><br>
+                    </div>
+                    <div class="radio">
+                        <label><input type = "radio" ng-model="servervars.load_balancing" value="No">No</label><br>
+                    </div>
+                    <label> Load Balancing Explanation</label>
+                    <textarea class="form-control" placeholder="Too big for one server to handle" name="load_balance_ex" ng-model="servervars.load_balance_ex" ng-disabled="load_test()"></textarea>
+                </div>
+                <div class="form-group">
+                <label>Basic CloudWatch Monitoring (Uptime/Availability, CPU, RAM, Disk)?</label>
+                    <div class="radio">
+                        <label><input type = "radio" ng-model="servervars.basic_monitoring" value="Yes">Yes</label><br>
+                    </div>
+                    <div class="radio">
+                    <label><input type = "radio" ng-model="servervars.basic_monitoring" value="No">No</label><br>
+                    </div>
+                    <div class="form-group">
+                        <label>List Additional Monitoring Requirements</label>
+                        <textarea class="form-control" placeholder="App 1 status, App 2 status" name="additional_monitoring" ng-model="servervars.additional_monitoring"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Additional Comments </label>
+                    <textarea class="form-control" placeholder="Great server!" name="other_comments" ng-model="servervars.other_comments"></textarea>
+                </div>
+          <button type="submit" class="btn btn-primary btn-lg">Save Form</button>
+        <div ng-show="save_form" class="alert alert-success fade in">
+            <strong>Success!</strong> Your server request form entries have been saved.
+        </div>
+    </form>
+            </div>
+        </div>
+        </div>
+                </div>
+
+</body>
+</html>

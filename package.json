@@ -1,0 +1,15 @@
+{
+  "name": "server_request_form",
+  "version": "1.0.0",
+  "description": "Standardizes VM Request Form",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "1.16.0",
+    "express": "4.14.0",
+    "mongoose": "4.7.7"
+  },
+  "author": "Bill Buis"
+}

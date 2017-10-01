@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" mlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Server Cost Estimation</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form name = "costForm" ng-submit="write_costs()" ng-controller="serverinfo_controller">
+                    <div class="form-group">
+                        <label>* CPU cost per VM ($) </label>
+                        <input class="form-control" name="cpu_cost" placeholder="5.00" type="number" step="0.01" min="0" ng-model="server_costs.cpu_cost" required/>
+                        <span class="required" ng-show="costForm.cpu_cost.$touched && costForm.cpu_cost.$invalid">CPU cost per VM is required</span>
+                    </div>
+                    <div class="form-group">
+                        <label>* RAM cost per VM ($)</label>
+                        <input class="form-control" name="ram_cost" placeholder="5.00" type="number" step="0.01" min="0" ng-model="server_costs.ram_cost" required/>
+                        <span class="required" ng-show="costForm.ram_cost.$touched && costForm.ram_cost.$invalid">RAM cost per VM is required</span>
+                    </div>
+                    <div class="form-group">
+                        <label>* Network cost per Vcpu ($)</label>
+                        <input class="form-control" name="network_cost" placeholder="5.00" type="number" step="0.01" min="0" ng-model="server_costs.network_cost" required/>
+                        <span class="required" ng-show="costForm.network_cost.$touched && costForm.network_cost.$invalid">Network cost per Vcpu is required</span>
+                    </div>
+                    <div class="form-group">
+                        <label>* Bandwith, Power cost per Vcpu ($)</label>
+                        <input class="form-control" name="bandwidth_cost" placeholder="5.00" type="number" step="0.01" min="0" ng-model="server_costs.bandwidth_cost" required/>
+                        <span class="required" ng-show="costForm.bandwidth_cost.$touched && costForm.bandwidth_cost.$invalid">Bandwith, Power cost per Vcpu is required</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Save Cost Estimates</button>
+                    <div ng-show="save_costs" class="alert alert-success fade in">
+                        <strong>Success!</strong> Your server cost estimate entries have been saved.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

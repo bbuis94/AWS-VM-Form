@@ -1,2 +1,1 @@
-# AWS-VM-Form
-Request form designed for making requests for new AWS VMs to be provisioned
+This project standardizes VMREQUESTS throughout the company by asking the ticket reporters to fill out a form that provides a detailed list of specifications that can be referenced by Operations.

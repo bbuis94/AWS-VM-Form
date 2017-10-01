@@ -1,0 +1,22 @@
+mongo:
+  image: mongo:latest
+  ports:
+  - "27017:27017"
+  volumes:
+  - './data:/data/db'
+
+nginx:
+  build : ./nginx
+  links: 
+  - application
+  ports:
+  - "80:80" 
+application:
+  build: .
+  command:  npm start --color=always
+  ports:
+  - "8080:8080"
+  volumes :
+  - ./:/app
+  links:
+  - mongo

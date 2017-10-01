@@ -1,0 +1,57 @@
+<!-- Author : Bill Buis ! -->
+<!-- The purpose of this view is to define the tabs that are clicked to navigate to the different parts of the application!-->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="server_info" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Server/Environment Request Application</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/server_info_styles.css" media="screen" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle^=pill]').click(function(e) {
+
+
+                if ($(this).parent().hasClass('active')) {
+                    console.log($(this).parent().removeClass('active'));
+                    console.log($($(this).attr('href')).removeClass('in active'));
+
+                } else {
+                    $('[data-toggle^=pill]').parent().removeClass('active');
+                    $('[class^=tab-pane]').removeClass('in active');
+
+                    console.log($(this).parent().addClass('active'));
+                    console.log($($(this).attr('href')).addClass('in active'));
+                }
+
+                e.stopPropagation();
+            });
+        });
+    </script>
+    <script src="app.js"></script>
+    <script src="js/start_screen.js"></script>
+    <script src="js/serverinfo_controller.js"></script>
+    <script src="js/pdfmake.js"></script>
+    <script src="js/pdf_controller.js"></script>
+    <script src="js/vfs_fonts.js"></script>
+    <script src="js/dbcontroller.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li><a data-toggle="pill" href="#/">Home</a></li>
+        <li><a data-toggle="pill" href="#views/select">Server Selection</a></li>
+        <li><a data-toggle="pill" href="#views/form">Server Request Form</a></li>
+        <li><a data-toggle="pill" href="#views/costs">Server Cost Estimation</a></li>
+        <li><a data-toggle="pill" href="#views/results">PDF View/Download and Configuration Save</a></li>
+    </ul>
+    <br>
+</div>
+<ng-view></ng-view>
+</body>
+</html>

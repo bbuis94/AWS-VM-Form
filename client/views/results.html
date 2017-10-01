@@ -1,0 +1,31 @@
+<!-- Author : Bill Buis ! -->
+<!-- The purpose of this view is to define the page where configurations can be saved and the pdf for the user's session can be viewed and downloaded !-->
+
+<!DOCTYPE html>
+<html lang="en" mlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="panel-heading">
+    <center><h1>PDF View/Download and Configuration Save </h1></center>
+    <br>
+    <div ng-controller="dbcontroller">
+    <div ng-controller="pdf_controller">
+        <button class="btn btn-primary btn-lg" ng-disabled="check_saved()" ng-click="openPdf()"> View PDF</button>
+        <button class="btn btn-primary btn-lg" ng-disabled="check_saved()" ng-click="downloadPdf()"> Download PDF</button>
+        <button class="btn btn-primary btn-lg" ng-disabled="check_saved()" ng-click="addConfig()">Save Server Request Form Configuration</button>
+        <button class="btn btn-primary btn-lg" ng-disabled="check_saved()" ng-click="addCost()">Save Cost Estimation Configuration</button>
+        <br><br>
+        <div ng-show="saved_config" class="alert alert-success fade in">
+            <strong>Success!</strong> {{config.entry_name}} server request form configuration has been saved.
+        </div>
+        <div ng-show="saved_cost" class="alert alert-success fade in">
+            <strong>Success!</strong> {{cost.entry_name}} cost estimation configuration has been saved.
+        </div>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

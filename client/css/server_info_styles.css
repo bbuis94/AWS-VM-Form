@@ -1,0 +1,62 @@
+span.required
+{
+	color: red;
+}
+
+span.success
+{
+	color: lawngreen;
+}
+
+input
+{
+	width: 200px;
+	display: inline-block;
+	vertical-align: middle;
+}
+textarea
+{
+	width: 300px;
+	height: 200px;
+	vertical-align: middle;
+}
+
+input.bottom {
+	position: absolute;
+	bottom: 50px;
+	width: 100px;
+	right: 70px;
+}
+
+input.quantity {
+	width: 50px;
+}
+
+input.checkbox {
+	width: 380px;
+}
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+button.bottom {
+	position:absolute;
+	bottom: 50px;
+	width: 100px;
+}
+
+
+input.bottom2
+{
+	width: 100px;
+    height: 50px;
+	float: left;
+}
+
+td.date, th.date {
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 380px;
+	text-align: center;
+}

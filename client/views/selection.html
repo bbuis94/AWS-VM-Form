@@ -1,0 +1,35 @@
+<!-- Author : Bill Buis ! -->
+<!-- The purpose of this view is to define the page where servers types can be selected along with the requested quantity !-->
+
+<!DOCTYPE html>
+<html lang="en" mlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <center><h1>Server Selection </h1></center>
+    <div ng-controller="start_screen">
+        <br>
+        <table class="table table-striped">
+            <tr>
+                <td><h3>Server Type</h3></td>
+                <td><h3>Server Quantity</h3></td>
+                <td><h3>Date Requested By</h3></td>
+            </tr>
+            <tr ng-repeat="server in server_types">
+        <td>
+            <label class="checkbox"><input class="checkbox" type="checkbox"value="{{server.type}}" ng-model="server.check" name="server_check" id="{{server.type}}" ng-click="update_check(server)"/>
+            {{server.type}}</label>
+        </td>
+                <td><input type = "number" ng-model="server.quantity" value="{{server.quantity}}" placeholder="0" min = "0" name = "server.quantity"></td>
+                <td><input type = "text" ng-model="server.date" value="{{server.date}}" placeholder="1/1/2017" name = "server.date"></td>
+            </tr>
+        </table>
+        <button class="btn btn-primary btn-lg" ng-click="addItems()" ng-disabled=check_added()> Save Selections</button><br>
+        <div ng-show="saved" class="alert alert-success fade in">
+            <strong>Success!</strong> Your server selection has been saved
+        </div>
+    </div>
+<br>
+</body>
+</html>

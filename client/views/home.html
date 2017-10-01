@@ -1,0 +1,53 @@
+<!-- Author : Bill Buis ! -->
+<!-- The purpose of this view is to define the home page for the application where a server request info form configuration can be selected and loaded !-->
+<!-- Add default messages for dropdown menus in info form tomorrow !-->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="server_info" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<center><h1>Server Request Form Configuration Selection</h1></center>
+<div ng-controller="dbcontroller" ng-init="getConfigs();getCosts()">
+<form>
+    <div class="form-group">
+        <select class="form-control" ng-model="selection_id">
+            <option value="" selected>Select a Configuration</option>
+            <option ng-repeat="config in configs" value="{{config._id}}">Configuration Name : {{config.entry_name}}, Reporter Name
+            : {{config.first_name}} {{config.last_name}}, Project Name : {{config.project_name}}, OS : {{config.host_os}}, Purpose : {{config.host_purpose}}, Applications : {{config.applications}}</option>
+        </select>
+
+    </div>
+</form>
+    <br>
+    <button id = "confirm" class="btn btn-primary btn-lg" ng-click="incrementConfig(); getConfig()" ng-disabled="checkLoadedConfig()">  Load Server Request Form Configuration</button> <br><br>
+    <br><br>
+    <div ng-show="config_flag" class="alert alert-success fade in">
+        <strong>Success!</strong> {{config.entry_name}} has been loaded
+    </div>
+    <center><h1>Cost Estimation Configuration Selection</h1></center>
+    <form>
+        <div class="form-group">
+            <select class="form-control" ng-model="costselection_id">
+                <option value="" selected>Select a Cost Estimation Configuration</option>
+                <option ng-repeat="cost in costs" value="{{cost._id}}">Cost Estimate Name : {{cost.entry_name}}, CPU Cost : ${{cost.cpu_cost}}, RAM Cost : ${{cost.ram_cost}},
+                Network Cost : ${{cost.network_cost}}, Power,Bandwidth Cost : ${{cost.bandwidth_cost}}
+                </option>
+            </select>
+        </div>
+    </form>
+    <br>
+    <button id = "confirm_cost" class="btn btn-primary btn-lg" ng-click="incrementCost(); getCost()" ng-disabled="checkLoadedCost()"> Load Cost Estimation Configuration</button> <br><br>
+    <br><br>
+    <div ng-show="cost_flag" class="alert alert-success fade in">
+        <strong>Success!</strong> {{cost.entry_name}} has been loaded
+    </div>
+    <br><br>
+    <div class="alert alert-info fade in">
+        <strong>NOTE:</strong> You must double click the "Load Server Request Form Configuration" button in order to load a saved configuration for the server request form page. <br><br>
+        <strong>NOTE:</strong> You must double click the "Load Cost Estimation Configuration" button in order to load a saved configuration for the server cost estimation page. <br><br>
+    </div>
+</div>
+</body>
+</html>
