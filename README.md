@@ -9,7 +9,7 @@ Please note that installation instructions were done on a machine running Ubuntu
 1. Clone into the repository
 2. Install Docker using the following commands:
 
-`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
+`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -` <br />
 `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
 `sudo apt-get update`
 `apt-cache policy docker-ce`
