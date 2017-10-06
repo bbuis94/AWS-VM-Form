@@ -2,10 +2,8 @@
 
 /**
  * Application backend launch script
- * Will be used to implement mongodb database as well shortly
+ * 
  */
-
-//NOTE : Must fix duplicate key error in mongodb caused from attempting to save config after loading previous one
 
 const express = require('express');
 const app = express();
