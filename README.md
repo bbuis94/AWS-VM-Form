@@ -34,3 +34,16 @@ Please note that this application needs ports 8080 open for the application and 
 
 6. Access the application by entering localhost:8080/ in your web browser.
 
+# Technologies Used
+
+. Angularjs
+. Expressjs
+. Nodejs
+. MongoDB
+. Docker
+. HTML
+. CSS
+. Javascript
+. Docker
+. Nginx
+. Bootstrap
