@@ -36,14 +36,14 @@ Please note that this application needs ports 8080 open for the application and 
 
 # Technologies Used
 
-. Angularjs
-. Expressjs
-. Nodejs
-. MongoDB
-. Docker
-. HTML
-. CSS
-. Javascript
-. Docker
-. Nginx
-. Bootstrap
+-Angularjs
+-Expressjs
+-Nodejs
+-MongoDB
+-Docker
+-HTML
+-CSS
+-Javascript
+-Docker
+-Nginx
+-Bootstrap
