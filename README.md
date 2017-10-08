@@ -36,7 +36,7 @@ Please note that this application needs ports 8080 open for the application and 
 
 # Technologies Used
 
--Angularjs
+* Angularjs
 -Expressjs
 -Nodejs
 -MongoDB
