@@ -13,7 +13,7 @@ Please note that installation instructions were done on a machine running Ubuntu
 
 3. Install Docker-Compose using the following commands: 
 
-`sudo apt-get install docker-compose <br />`
+`sudo apt-get install docker-compose`
 
 4. Within the AWS-VM-Form directory, run the following command to build the application using docker-compose:
 
